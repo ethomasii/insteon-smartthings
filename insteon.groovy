@@ -52,7 +52,7 @@ def sendCmd(num, level)
 {
 	log.debug "in sendcmd"
 	/* http://${settings.host}:${settings.port}/3?0262${settings.deviceid}0F${num}FF=I=3 */
-    httpGet("http://thethomashome.dlinkddns.com:8000//3?0262208E360F${num}${level}=I=3") {response -> 
+    httpGet("http://${settings.host}:${settings.port}//3?0262${settings.deviceid}0F${num}${level}=I=3") {response -> 
         def content = response.data
         log.debug content
     }
@@ -75,7 +75,7 @@ def checkLight(){
 }
 
 def getStatus() {
-    httpGet("http://thethomashome.dlinkddns.com:8000/buffstatus.xml") {response -> 
+    httpGet("http://${settings.host}:${settings.port}/buffstatus.xml") {response -> 
         def content = response.data
         log.debug content
         
